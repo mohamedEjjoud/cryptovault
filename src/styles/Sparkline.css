@@ -1,0 +1,33 @@
+/* src/styles/Sparkline.css */
+
+.sparkline {
+  display: block;
+  overflow: visible;
+}
+
+.sparkline__path {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sparkline--positive .sparkline__path {
+  stroke: var(--green);
+}
+
+.sparkline--negative .sparkline__path {
+  stroke: var(--red);
+}
+
+.sparkline__fill {
+  opacity: 0.08;
+}
+
+.sparkline--positive .sparkline__fill {
+  fill: var(--green);
+}
+
+.sparkline--negative .sparkline__fill {
+  fill: var(--red);
+}

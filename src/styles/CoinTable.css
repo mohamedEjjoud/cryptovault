@@ -1,0 +1,248 @@
+/* src/styles/CoinTable.css */
+
+/* ── Search & Controls Bar ── */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+  max-width: 400px;
+}
+
+.search-wrapper__icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: color var(--transition);
+}
+
+.search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 1rem 0 2.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.search-input:focus + .search-wrapper__icon,
+.search-wrapper:focus-within .search-wrapper__icon {
+  color: var(--accent-light);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.controls__count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ── Table ── */
+.coin-table-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.coin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.coin-table thead th {
+  padding: 0.85rem 1rem;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.coin-table thead th:nth-child(1),
+.coin-table thead th:nth-child(2),
+.coin-table thead th:nth-child(3) {
+  text-align: left;
+}
+
+.coin-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background var(--transition);
+  animation: fadeIn 0.3s ease both;
+}
+
+.coin-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.coin-table tbody tr:hover {
+  background: var(--bg-card-hover);
+}
+
+.coin-table tbody td {
+  padding: 1rem 1rem;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+/* Rank */
+.td-rank {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  width: 3rem;
+  text-align: left;
+}
+
+/* Coin identity */
+.td-coin {
+  min-width: 160px;
+}
+
+.coin-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.coin-identity__img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.coin-identity__name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.coin-identity__symbol {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Numeric cells */
+.td-price,
+.td-mcap,
+.td-vol,
+.td-supply,
+.td-change {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.td-price {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.td-mcap,
+.td-vol,
+.td-supply {
+  color: var(--text-secondary);
+}
+
+/* Change badge */
+.change-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.change-badge.positive {
+  color: var(--green);
+  background: var(--green-dim);
+}
+
+.change-badge.negative {
+  color: var(--red);
+  background: var(--red-dim);
+}
+
+/* Sparkline cell */
+.td-sparkline {
+  text-align: right;
+  padding-right: 1.5rem;
+  width: 110px;
+}
+
+/* Empty state */
+.coin-table-empty {
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ── Responsive: hide columns on smaller screens ── */
+@media (max-width: 1024px) {
+  .hide-lg {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-md {
+    display: none;
+  }
+
+  .coin-table thead th,
+  .coin-table tbody td {
+    padding: 0.85rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hide-sm {
+    display: none;
+  }
+
+  .coin-identity__img {
+    width: 28px;
+    height: 28px;
+  }
+}
